@@ -8,13 +8,15 @@ import {environment} from '../environments/environment';
 import { DevelopersComponent } from './developers/developers.component';
 import { DeveloperComponent } from './developers/developer/developer.component';
 import { DeveloperListComponent } from './developers/developer-list/developer-list.component';
+import { NavBarComponent } from './nav-bar/nav-bar.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     DevelopersComponent,
     DeveloperComponent,
-    DeveloperListComponent
+    DeveloperListComponent,
+    NavBarComponent
   ],
   imports: [
     BrowserModule,
