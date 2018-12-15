@@ -5,14 +5,21 @@ import { AngularFirestoreModule } from '@angular/fire/firestore';
 
 import { AppComponent } from './app.component';
 import {environment} from '../environments/environment';
+import { DevelopersComponent } from './developers/developers.component';
+import { DeveloperComponent } from './developers/developer/developer.component';
+import { DeveloperListComponent } from './developers/developer-list/developer-list.component';
 
 @NgModule({
   declarations: [
-    AppComponent
+    AppComponent,
+    DevelopersComponent,
+    DeveloperComponent,
+    DeveloperListComponent
   ],
   imports: [
     BrowserModule,
-    AngularFireModule.initializeApp(environment)
+    AngularFireModule.initializeApp(environment.firebaseConfig),
+    AngularFirestoreModule
   ],
   providers: [],
   bootstrap: [AppComponent]
