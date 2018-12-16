@@ -7,10 +7,10 @@
   </thead>
   <tbody>
   <tr *ngFor="let dev of list">
-    <td>{{dev.name}}</td>
-    <td>{{dev.position}}</td>
-    <td>{{dev.mobile}}</td>
-    <td><button class="btn text-danger"><i class="fa fa-trash"></i></button></td>
+    <td (click)="onEdit(dev)">{{dev.name}}</td>
+    <td (click)="onEdit(dev)">{{dev.position}}</td>
+    <td (click)="onEdit(dev)">{{dev.mobile}}</td>
+    <td><button class="btn text-danger" (click)="onDelete(dev.id)"><i class="fa fa-trash"></i></button></td>
   </tr>
   </tbody>
 </table>

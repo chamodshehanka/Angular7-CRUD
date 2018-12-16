@@ -33,8 +33,13 @@ export class DeveloperComponent implements OnInit {
   }
 
   onSubmit(form: NgForm) {
-    const data = form.value;
-    this.firestore.collection('developers').add(data);
+    const data = Object.assign({}, form.value);
+    delete data.id;
+    if (form.value.id == null) {
+      this.firestore.collection('developers').add(data);
+    } else {
+      this.firestore.doc('developers/' + form.value.id).update(data);
+    }
     this.resetForm(form);
     this.toastr.success('Developer Added Successfully!', 'Developer Register');
   }
