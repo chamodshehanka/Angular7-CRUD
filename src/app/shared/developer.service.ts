@@ -1,5 +1,6 @@
 import { Injectable } from '@angular/core';
 import {Developer} from './developer.model';
+import {AngularFirestore} from '@angular/fire/firestore';
 
 @Injectable({
   providedIn: 'root'
@@ -7,5 +8,9 @@ import {Developer} from './developer.model';
 export class DeveloperService {
   formData: Developer;
 
-  constructor() { }
+  constructor(private firestore: AngularFirestore) { }
+
+  getDevelopers() {
+    return this.firestore.collection('developers').snapshotChanges();
+  }
 }

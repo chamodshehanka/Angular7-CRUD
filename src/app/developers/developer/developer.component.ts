@@ -1,6 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import {DeveloperService} from '../../shared/developer.service';
 import {NgForm} from '@angular/forms';
+import {AngularFirestore} from '@angular/fire/firestore';
+import {ToastrService} from 'ngx-toastr';
 
 @Component({
   selector: 'app-developer',
@@ -9,7 +11,10 @@ import {NgForm} from '@angular/forms';
 })
 export class DeveloperComponent implements OnInit {
 
-  constructor(private service: DeveloperService) { }
+  constructor(private service: DeveloperService,
+              private firestore: AngularFirestore,
+              private toastr: ToastrService
+  ) { }
 
   ngOnInit() {
     this.resetForm();
@@ -25,5 +30,12 @@ export class DeveloperComponent implements OnInit {
       position: '',
       mobile: ''
     };
+  }
+
+  onSubmit(form: NgForm) {
+    const data = form.value;
+    this.firestore.collection('developers').add(data);
+    this.resetForm(form);
+    this.toastr.success('Developer Added Successfully!', 'Developer Register');
   }
 }

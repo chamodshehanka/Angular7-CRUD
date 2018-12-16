@@ -1,4 +1,6 @@
 import { Component, OnInit } from '@angular/core';
+import {DeveloperService} from '../../shared/developer.service';
+import {Developer} from '../../shared/developer.model';
 
 @Component({
   selector: 'app-developer-list',
@@ -7,9 +9,17 @@ import { Component, OnInit } from '@angular/core';
 })
 export class DeveloperListComponent implements OnInit {
 
-  constructor() { }
+  list: Developer[];
+  constructor(private service: DeveloperService) { }
 
   ngOnInit() {
+    this.service.getDevelopers().subscribe(actionArray => {
+      this.list = actionArray.map(item => {
+        return {
+          id: item.payload.doc.id,
+          ...item.payload.doc.data()} as Developer;
+      });
+    });
   }
 
 }

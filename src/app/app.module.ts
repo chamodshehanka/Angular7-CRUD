@@ -11,6 +11,8 @@ import { DeveloperComponent } from './developers/developer/developer.component';
 import { DeveloperListComponent } from './developers/developer-list/developer-list.component';
 import { NavBarComponent } from './nav-bar/nav-bar.component';
 import {DeveloperService} from './shared/developer.service';
+import {ToastrModule} from 'ngx-toastr';
+import {BrowserAnimationsModule} from '@angular/platform-browser/animations';
 
 @NgModule({
   declarations: [
@@ -24,7 +26,9 @@ import {DeveloperService} from './shared/developer.service';
     BrowserModule,
     AngularFireModule.initializeApp(environment.firebaseConfig),
     AngularFirestoreModule,
-    FormsModule
+    FormsModule,
+    BrowserAnimationsModule,
+    ToastrModule.forRoot()
   ],
   providers: [DeveloperService],
   bootstrap: [AppComponent]
